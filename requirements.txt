@@ -1,0 +1,3 @@
+coverage
+Flask==0.12
+pyfcm==1.2.2

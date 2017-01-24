@@ -28,8 +28,13 @@ Usage
 -----
 You’ll need to do, is setup config:
 ```python
+# Your api-key can be gotten from:  https://console.firebase.google.com/project/<project-name>/settings/cloudmessaging
 FCM_API_KEY = os_env.get('FCM_API_KEY')
-FCM_PROXY_DICT = os_env.get('FCM_PROXY_DICT')  # Not required
+# Not required proxy dict
+FCM_PROXY_DICT = {
+    "http"  : "http://127.0.0.1",
+    "https" : "http://127.0.0.1",
+}
 ```
 
 Then initialize PyFCM under your application:

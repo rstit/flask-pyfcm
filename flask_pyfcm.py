@@ -49,6 +49,8 @@ class FCM(object):
             invalid_ids = list(invalid_messages.keys())
             if self._failure_handler:
                 self._failure_handler(invalid_ids, invalid_messages)
+            return False
+        return True
 
     def failure_handler(self, f):
         """Register a handler for getting bad ids.

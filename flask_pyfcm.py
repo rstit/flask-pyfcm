@@ -16,6 +16,7 @@ class FCM(object):
         'NotRegistered',
         'MismatchSenderId'
     ]
+
     def __init__(self, app=None):
         self.app = app
         self._failure_handler = None
@@ -41,10 +42,14 @@ class FCM(object):
         self.notify_multiple_devices([registration_id], **kwargs)
 
     def notify_multiple_devices(self, registration_ids, **kwargs):
-        response = self.push_service.notify_multiple_devices(registration_ids, **kwargs)
+        response = self.push_service.notify_multiple_devices(registration_ids,
+                                                             **kwargs)
         if response.get('failure'):
             id_and_responses = zip(registration_ids, response.get('results'))
-            filtered = filter(lambda x: x[1].get('error') in self.FCM_INVALID_ID_ERRORS, id_and_responses)
+            filtered = filter(
+                lambda x: x[1].get('error') in self.FCM_INVALID_ID_ERRORS,
+                id_and_responses
+            )
             invalid_messages = dict(filtered)
             invalid_ids = list(invalid_messages.keys())
             if self._failure_handler:

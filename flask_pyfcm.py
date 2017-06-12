@@ -39,7 +39,7 @@ class FCM(object):
             return ctx.fcm_service
 
     def notify_single_device(self, registration_id, *args, **kwargs):
-        self.notify_multiple_devices([registration_id], **kwargs)
+        return self.notify_multiple_devices([registration_id], **kwargs)
 
     def notify_multiple_devices(self, registration_ids, **kwargs):
         response = self.push_service.notify_multiple_devices(registration_ids,

@@ -9,6 +9,26 @@ try:
 except ImportError:
     from flask import _request_ctx_stack as stack
 
+class NotificationBuilder(object):
+
+    def __init__(self):
+        pass
+
+    def build(self):
+        pass
+
+    def message_title(self, title):
+        pass
+
+    def message_body(self, body):
+        pass
+
+    def message_icon(self, icon):
+        pass
+
+    def message_sound(self, sound):
+        pass
+
 
 class FCM(object):
     FCM_INVALID_ID_ERRORS = [
